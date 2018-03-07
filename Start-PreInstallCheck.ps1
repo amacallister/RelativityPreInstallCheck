@@ -1,10 +1,11 @@
 ﻿# Dot Source Script Functions
 . (Join-Path $PSScriptRoot Start-SqlPreInstallCheck.ps1)
 . (Join-Path $PSScriptRoot Start-SecretStorePreInstallCheck.ps1)
+. (Join-Path $PSScriptRoot Start-DistributedSqlPreInstallCheck.ps1)
 . (Join-Path $PSScriptRoot Start-ServiceBusPreInstallCheck.ps1)
 . (Join-Path $PSScriptRoot Start-WebPreInstallCheck.ps1)
 . (Join-Path $PSScriptRoot Start-CoreAgentPreInstallCheck.ps1)
-. (Join-Path $PSScriptRoot dtSearchAgentPreInstallCheck.ps1)
+. (Join-Path $PSScriptRoot Start-dtSearchAgentPreInstallCheck.ps1)
 . (Join-Path $PSScriptRoot Start-ConversionAgentPreInstallCheck.ps1)
 . (Join-Path $PSScriptRoot Start-AnalyticsPreInstallCheck.ps1)
 . (Join-Path $PSScriptRoot Start-InvariantSqlPreInstallCheck.ps1)
@@ -210,9 +211,28 @@ function Start-PreInstallCheck {
                 do {
 
                     try {
-                    
-                        Write-Host "Please enter sysadmin credentials for the Primary SQL Server instance on $computer."
-                        $newCredential = Get-Credential -Message "Please enter sysadmin credentials for the Primary SQL Server instance on $computer."
+                        
+                        $done = $True
+
+                        do {
+
+                            Write-Host "Please enter sysadmin credentials for the Primary SQL Server instance on $computer."
+                            $newCredential = Get-Credential -Message "Please enter sysadmin credentials for the Primary SQL Server instance on $computer."
+
+                            # Input validation - make sure password is not empty
+                            $password = $newCredential.Password
+                            $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
+                            $password = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+
+                            # Password if statement
+                            if($password::Empty -or $password -eq '' -or $password -eq $null) {
+                        
+                                $done = $False
+                                Write-Host "The password field is empty. Try entering credentials again."
+                                                   
+                            }# End password if statement
+                            
+                        } while($done -eq $False)
 
                         $credential += $newCredential
                         $popupComplete = "True"
@@ -220,10 +240,13 @@ function Start-PreInstallCheck {
                     } catch {
                 
                         # The credentials pop-up was cancelled out.
-                        $popupComplete = "False"
+                        $popupComplete = "False"                       
 
                         # This counter will increment until the value is equal to five.
                         $loopCounter ++
+                        
+                        # Message user
+                        Write-Host "You clicked cancel in the credentials pop-up $loopCounter time(s). Please try again. You will have 5 chances before the Pre-Install Check will continue without credentials."                        
 
                     } # End try catch block
 
@@ -272,9 +295,28 @@ function Start-PreInstallCheck {
                 do {
 
                     try {
-                    
-                        Write-Host "Please enter sysadmin credentials for the Distributed SQL Server instance on $computer."
-                        $newCredential = Get-Credential -Message "Please enter sysadmin credentials for the Distributed SQL Server instance on $computer."
+                        
+                        $done = $True
+
+                        do {
+
+                            Write-Host "Please enter sysadmin credentials for the Distributed SQL Server instance on $computer."
+                            $newCredential = Get-Credential -Message "Please enter sysadmin credentials for the Distributed SQL Server instance on $computer."
+
+                            # Input validation - make sure password is not empty
+                            $password = $newCredential.Password
+                            $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
+                            $password = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+
+                            # Password if statement
+                            if($password::Empty -or $password -eq '' -or $password -eq $null) {
+                        
+                                $done = $False
+                                Write-Host "The password field is empty. Try entering credentials again."
+                                                   
+                            }# End password if statement
+                            
+                        } while($done -eq $False)
 
                         $credential += $newCredential
                         $popupComplete = "True"
@@ -282,10 +324,13 @@ function Start-PreInstallCheck {
                     } catch {
                 
                         # The credentials pop-up was cancelled out.
-                        $popupComplete = "False"
+                        $popupComplete = "False"                       
 
                         # This counter will increment until the value is equal to five.
                         $loopCounter ++
+                        
+                        # Message user
+                        Write-Host "You clicked cancel in the credentials pop-up $loopCounter time(s). Please try again. You will have 5 chances before the Pre-Install Check will continue without credentials."                        
 
                     } # End try catch block
 
@@ -399,9 +444,28 @@ function Start-PreInstallCheck {
                 do {
 
                     try {
-                    
-                        Write-Host "Please enter sysadmin credentials for the Invariant SQL Server instance on $computer."
-                        $newCredential = Get-Credential -Message "Please enter sysadmin credentials for the Invariant SQL Server instance on $computer."
+                        
+                        $done = $True
+
+                        do {
+
+                            Write-Host "Please enter sysadmin credentials for the Invariant SQL Server instance on $computer."
+                            $newCredential = Get-Credential -Message "Please enter sysadmin credentials for the Invariant SQL Server instance on $computer."
+
+                            # Input validation - make sure password is not empty
+                            $password = $newCredential.Password
+                            $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
+                            $password = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+
+                            # Password if statement
+                            if($password::Empty -or $password -eq '' -or $password -eq $null) {
+                        
+                                $done = $False
+                                Write-Host "The password field is empty. Try entering credentials again."
+                                                   
+                            }# End password if statement
+                            
+                        } while($done -eq $False)
 
                         $credential += $newCredential
                         $popupComplete = "True"
@@ -409,10 +473,13 @@ function Start-PreInstallCheck {
                     } catch {
                 
                         # The credentials pop-up was cancelled out.
-                        $popupComplete = "False"
+                        $popupComplete = "False"                       
 
                         # This counter will increment until the value is equal to five.
                         $loopCounter ++
+                        
+                        # Message user
+                        Write-Host "You clicked cancel in the credentials pop-up $loopCounter time(s). Please try again. You will have 5 chances before the Pre-Install Check will continue without credentials."                        
 
                     } # End try catch block
 
@@ -485,3 +552,4 @@ function Start-PreInstallCheck {
 } # End Start-PreInstallCheck function
 
 #Start-PreInstallCheck -inputPath C:\input.csv -sql -secretStore -distributedSql -serviceBus -web -coreAgent -dtSearchAgent -conversionAgent -analytics -invariantSql -queueManager -worker -file -smtp
+#Start-PreInstallCheck -inputPath C:\input.csv -invariantSql
