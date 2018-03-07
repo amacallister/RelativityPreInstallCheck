@@ -10,7 +10,7 @@
         Server Role Type of the computers passed into the function.
         .PARAMETER credential
         SQL Server Instance sysadmin username and password
-        .RETURN
+        .OUTPUTS
         Outputs the Mixed Mode Authentication Status for a list of computers in a file called output.csv.
         .EXAMPLE
         Get-MixedModeAuthenticationStatus -computerName computer -serverRole role -credential credential

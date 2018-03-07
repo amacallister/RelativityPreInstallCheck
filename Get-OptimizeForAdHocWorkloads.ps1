@@ -10,7 +10,7 @@
         Server Role Type of the computers passed into the function.
         .PARAMETER credential
         SQL Server Instance sysadmin username and password
-        .RETURN
+        .OUTPUTS
         Outputs the Optimize For Ad Hoc Workloads value for a list of computers in a file called output.csv.
         .EXAMPLE
         Get-OptimizeForAdHocWorkloads -computerName computer -serverRole role -credential credential

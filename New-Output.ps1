@@ -5,9 +5,13 @@
         .DESCRIPTION
         This commandlet creates an output.csv file that contains the Server Roles, Server Names, Requirements, and Output for each Pre-Install Requirement.
         .PARAMETER serverRole
+        The type of server
         .PARAMETER serverName
+        The hostname of the server
         .PARAMETER requirement
+        The Pre-Install Requirement
         .PARAMETER output
+        The output from each Pre-Install Requirement script
         .EXAMPLE
         New-Output -serverRole role -serverName name -requirement requirement -output output
     #>

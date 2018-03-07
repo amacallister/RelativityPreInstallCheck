@@ -8,7 +8,7 @@
         List of computer names to check. Accepts pipeline input.
         .PARAMETER serverRole
         Server Role Type of the computers passed into the function.
-        .RETURN
+        .OUTPUTS
         Returns the IIS Log File Options for a list of computers in a file called output.csv.
         .EXAMPLE
         Get-IISLogFileOptions -computerName computer -serverRole role

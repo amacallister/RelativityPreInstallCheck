@@ -8,7 +8,7 @@
         List of computer names to check.  Accepts pipeline input.
         .PARAMETER serverRole
         Server Role Type of the computers passed into the function.
-        .RETURN
+        .OUTPUTS
         Outputs the SQL Full Text Filter Daemon Launcher Service Install Status for a list of computers in a file called output.csv.
         .EXAMPLE
         Get-SqlFullTextFilterDaemonLauncherServiceInstallStatus -computerName computer -serverRole role

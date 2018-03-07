@@ -8,7 +8,7 @@
         List of computer names to check. Accepts pipeline input.
         .PARAMETER serverRole
         Server Role Type of the computers passed into the function.
-        .RETURN
+        .OUTPUTS
         Outputs the Service Bus DNS Accessibility for a file called output.csv.
         .EXAMPLE
         Get-ServiceBusDNSAccessibility -computerName computer -serverRole role

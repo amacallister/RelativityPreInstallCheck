@@ -6,6 +6,8 @@
         This commandlet returns the TEMP and TMP Environment variable locations for a list of computers.
         .PARAMETER computerName
         List of computer names to check. Accepts pipeline input.
+        .OUTPUTS
+        Returns the TEMP and TMP Environment variable locations for a list of computers in a file called output.csv.
         .EXAMPLE
         Get-TempDriveLocation -computerName computer -serverRole role
         .EXAMPLE

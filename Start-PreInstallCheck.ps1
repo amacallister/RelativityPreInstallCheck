@@ -73,7 +73,7 @@
 function Start-PreInstallCheck {  
     <#
         .SYNOPSIS
-        This commandlet returns a report called output.csv.v
+        This commandlet returns a report called output.csv
         .DESCRIPTION
         This commandlet returns a report called output.csv listing the Server Roles, Server Names, Requirements, and Output for each Pre-Install Requirement based on input in an input.csv file.
         .PARAMETER inputPath
@@ -109,8 +109,10 @@ function Start-PreInstallCheck {
         .PARAMETER smtp
         Switch value that indicates the SMTP server role should be checked for pre-install requirements.
         .PARAMETER input
-        CSV file where each entry has a Server Role, Server Name, and Roles and Features if the server role is web or agent.
-        .OUTPUT
+        CSV file where each entry has a Server Role, Server Name, and Roles and Features if the server role is web or agent.  
+        .INPUTS
+        input.csv file that contains the Server Roles, Server Names, Web Roles and Features, and Agent Roles and Features
+        .OUTPUTS
         output.csv file that contains the Server Roles, Server Names, Requirements, and Output for each Pre-Install Requirement
         .EXAMPLE
         Start-PreInstallCheck -inputPath c:\input.csv -all

@@ -8,7 +8,7 @@
         List of computer names to check. Accepts pipeline input.
         .PARAMETER serverRole
         Server Role Type of the computers passed into the function.
-        .RETURN
+        .OUTPUTS
         Outputs the install status of required Worker Installed Programs for a list of computers in a file called output.csv.
         .EXAMPLE
         Get-WorkerInstalledPrograms -computerName computer -serverRole role

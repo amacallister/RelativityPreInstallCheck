@@ -10,7 +10,7 @@
         One or more required roles and features to install if not installed already. Accepts pipeline input.
         .PARAMETER serverRole
         Server Role Type of the computers passed into the function.
-        .RETURN
+        .OUTPUTS
         Returns the install status of roles and features for a list of computers in a file called output.csv.
         .EXAMPLE
         Get-ServerRolesAndFeatures -computerName computer -rolesAndFeatures role -serverRole role 
