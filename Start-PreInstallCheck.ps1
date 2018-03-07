@@ -255,7 +255,18 @@ function Start-PreInstallCheck {
                 if($loopCounter -eq 5) {
                 
                     Write-Host "The credential pop-up has been cancelled 5 times. The credentials will remain empty and all SQL scripts relying on that value will produce no output."
-                    $newCredential = "NoValue"
+
+                    try {
+
+                        $newCredential.UserName = "NoValue"
+                        $newCredential.Password = "NoValue"
+
+                    } catch {
+                    
+                        Write-Host "Empty credentials will be passed to $computer."
+                    
+                    } # End empty credential object try catch block
+
                     $credential += $newCredential
 
                 } # End loop counter if statement
@@ -339,7 +350,18 @@ function Start-PreInstallCheck {
                 if($loopCounter -eq 5) {
                 
                     Write-Host "The credential pop-up has been cancelled 5 times. The credentials will remain empty and all SQL scripts relying on that value will produce no output."
-                    $newCredential = "NoValue"
+                    
+                    try {
+
+                        $newCredential.UserName = "NoValue"
+                        $newCredential.Password = "NoValue"
+
+                    } catch {
+                    
+                        Write-Host "Empty credentials will be passed to $computer."
+                    
+                    } # End empty credential object try catch block
+
                     $credential += $newCredential
 
                 } # End loop counter if statement
@@ -488,7 +510,18 @@ function Start-PreInstallCheck {
                 if($loopCounter -eq 5) {
                 
                     Write-Host "The credential pop-up has been cancelled 5 times. The credentials will remain empty and all SQL scripts relying on that value will produce no output."
-                    $newCredential = "NoValue"
+                    
+                    try {
+
+                        $newCredential.UserName = "NoValue"
+                        $newCredential.Password = "NoValue"
+
+                    } catch {
+                    
+                        Write-Host "Empty credentials will be passed to $computer."
+                    
+                    } # End empty credential object try catch block
+
                     $credential += $newCredential
 
                 } # End loop counter if statement
