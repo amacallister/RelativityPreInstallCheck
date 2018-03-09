@@ -40,7 +40,15 @@
         }
      ) # End fileData object creation block
   
-  # Write output data to CSV file
-  $fileData | Export-Csv -Append -Path C:\output.csv
+  try {
+
+    # Write output data to CSV file
+    $fileData | Export-Csv -Append -ErrorAction 'Stop' -Path C:\output.csv
+
+  } catch {
+  
+    Write-Host "Output could not be written to the output file. Make sure the file is not open."
+  
+  } # End try catch block
 
 } # End New-Output function

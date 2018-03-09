@@ -1,4 +1,6 @@
-﻿# Dot Source Script Functions
+﻿# Version 1.0 written by Amanda MacAllister
+
+# Dot Source Script Functions
 . (Join-Path $PSScriptRoot Start-SqlPreInstallCheck.ps1)
 . (Join-Path $PSScriptRoot Start-SecretStorePreInstallCheck.ps1)
 . (Join-Path $PSScriptRoot Start-DistributedSqlPreInstallCheck.ps1)
@@ -587,4 +589,4 @@ function Start-PreInstallCheck {
 } # End Start-PreInstallCheck function
 
 #Start-PreInstallCheck -inputPath C:\input.csv -sql -secretStore -distributedSql -serviceBus -web -coreAgent -dtSearchAgent -conversionAgent -analytics -invariantSql -queueManager -worker -file -smtp
-#Start-PreInstallCheck -inputPath C:\input.csv -invariantSql
+#Start-PreInstallCheck -inputPath C:\input.csv -smtp
